@@ -1,6 +1,8 @@
 # 🎵 Vibe Search — Spotify Semantic Search Engine
 
-A semantic search engine for the **Spotify Million Song Dataset** that allows users to discover songs based on the **meaning, mood, or vibe of their lyrics**, rather than relying only on exact song titles, artists, or keywords.
+A **deep learning-based semantic search engine** for the Spotify Million Song Dataset that allows users to discover songs based on the **meaning, mood, or vibe of their lyrics**, rather than relying only on exact song titles, artists, or keywords.
+
+The system uses the **pretrained Sentence Transformer model `all-MiniLM-L6-v2`**, a Transformer-based deep learning model, to convert lyric chunks and user queries into 384-dimensional semantic embeddings. These embeddings are indexed in Milvus and retrieved using HNSW with cosine similarity.
 
 For example, a user can search:
 
