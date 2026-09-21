@@ -29,3 +29,5 @@ data/*.bin
 data/spotify_vibes.db/
 
 data/checkpoints/
+
+data/spotify_millsongdata.csv
