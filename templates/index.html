@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Vibe Search — Semantic Music Discovery</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+
+    <a class="brand" href="/">
+      <span class="logo">≋</span>
+      VIBE
+    </a>
+
+    <span class="engine">
+      <i></i>
+      Semantic lyric search
+    </span>
+
+  </nav>
+
+
+  <!-- Main Content -->
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero">
+
+      <div class="badge">
+        MINILM · 384D · HNSW · COSINE
+      </div>
+
+      <h1>
+        Find music by
+        <br>
+        <span>how it feels.</span>
+      </h1>
+
+      <p class="lead">
+        Skip titles and genres. Describe a memory, mood, scene,
+        or moment and search directly through the meaning of the lyrics.
+      </p>
+
+
+      <!-- Search -->
+      <form
+        id="search-form"
+        class="search-bar"
+        autocomplete="off"
+      >
+
+        <span class="glass">
+          ⌕
+        </span>
+
+        <input
+          id="query"
+          type="text"
+          name="q"
+          placeholder="late night drive after a breakup..."
+          aria-label="Describe a vibe"
+        >
+
+        <button type="submit">
+          Search vibes
+          <b>→</b>
+        </button>
+
+      </form>
+
+
+      <!-- Example Queries -->
+      <div
+        class="examples"
+        id="examples"
+      >
+
+        <span class="examples-label">
+          Try a vibe
+        </span>
+
+        <button
+          class="chip"
+          type="button"
+        >
+          watching the sunset by the sea
+        </button>
+
+        <button
+          class="chip"
+          type="button"
+        >
+          carefree summer afternoon
+        </button>
+
+        <button
+          class="chip"
+          type="button"
+        >
+          peaceful late night in the rain
+        </button>
+
+        <button
+          class="chip"
+          type="button"
+        >
+          quiet rainy night
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- Search Results -->
+    <section class="results-wrap">
+
+      <section
+        id="status"
+        class="status"
+        hidden
+      ></section>
+
+      <ol
+        id="results"
+        class="tracklist"
+      ></ol>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+
+    <span>
+      <strong>Vibe Search</strong>
+      · Semantic music discovery through lyric embeddings.
+    </span>
+
+    <span>
+      MiniLM · Milvus · HNSW
+    </span>
+
+  </footer>
+
+
+  <script src="/static/script.js"></script>
+
+</body>
+</html>

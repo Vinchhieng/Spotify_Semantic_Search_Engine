@@ -1,0 +1,892 @@
+/* ================================
+   VIBE SEARCH
+   Modern Semantic Music Search UI
+================================ */
+
+:root {
+  --bg: #070908;
+  --card: #111512;
+
+  --text: #f5f7f5;
+  --soft: #a4aea7;
+  --muted: #6f7972;
+
+  --purple: #711ed7;
+  --purple-bright: #8d39ed;
+
+  --line: rgba(255, 255, 255, 0.09);
+  --line-strong: rgba(255, 255, 255, 0.15);
+}
+
+
+/* ================================
+   GLOBAL
+================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  color: var(--text);
+
+  font-family: "DM Sans", sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(30, 215, 96, 0.15),
+      transparent 32%
+    ),
+    linear-gradient(
+      #090c0a,
+      #060706
+    );
+
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* Background Glow */
+
+body::before,
+body::after {
+  content: "";
+
+  position: fixed;
+
+  width: 340px;
+  height: 340px;
+
+  border-radius: 50%;
+
+  filter: blur(130px);
+
+  background: var(--purple);
+
+  opacity: 0.07;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+body::before {
+  left: -200px;
+  top: 20%;
+}
+
+body::after {
+  right: -220px;
+  top: 55%;
+}
+
+
+/* ================================
+   NAVIGATION
+================================ */
+
+.nav {
+  width: min(1180px, calc(100% - 48px));
+
+  height: 82px;
+
+  margin: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid var(--line);
+}
+
+
+/* Brand */
+
+.brand {
+  color: white;
+
+  text-decoration: none;
+
+  font-family: "Manrope", sans-serif;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+
+  font-size: 0.9rem;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+/* Logo */
+
+.logo {
+  display: grid;
+
+  place-items: center;
+
+  width: 31px;
+  height: 31px;
+
+  border-radius: 50%;
+
+  background: var(--purple);
+
+  color: #071008;
+
+  font-size: 24px;
+
+  font-weight: 800;
+}
+
+
+/* Engine Status */
+
+.engine {
+  font-size: 0.77rem;
+
+  color: var(--soft);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.engine i {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--purple);
+
+  box-shadow:
+    0 0 12px var(--purple);
+}
+
+
+/* ================================
+   MAIN
+================================ */
+
+main {
+  width: min(
+    1050px,
+    calc(100% - 48px)
+  );
+
+  margin: auto;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero {
+  min-height: 590px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 65px 0;
+}
+
+
+/* Model Badge */
+
+.badge {
+  font-size: 0.67rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  color: var(--purple);
+
+  border:
+    1px solid
+    rgba(30, 215, 96, 0.2);
+
+  background:
+    rgba(30, 215, 96, 0.06);
+
+  padding: 8px 13px;
+
+  border-radius: 999px;
+
+  margin-bottom: 24px;
+}
+
+
+/* Main Heading */
+
+h1 {
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size:
+    clamp(
+      3.7rem,
+      8vw,
+      6.8rem
+    );
+
+  line-height: 0.94;
+
+  letter-spacing: -0.065em;
+
+  margin: 0;
+
+  font-weight: 800;
+}
+
+
+/* Outline Text */
+
+h1 span {
+  color: transparent;
+
+  -webkit-text-stroke:
+    1px
+    rgba(245, 247, 245, 0.65);
+}
+
+
+/* Description */
+
+.lead {
+  max-width: 620px;
+
+  color: var(--soft);
+
+  line-height: 1.7;
+
+  font-size: 1.02rem;
+
+  margin:
+    28px auto
+    34px;
+}
+
+
+/* ================================
+   SEARCH BAR
+================================ */
+
+.search-bar {
+  width: min(
+    790px,
+    100%
+  );
+
+  display: grid;
+
+  grid-template-columns:
+    48px
+    1fr
+    auto;
+
+  align-items: center;
+
+  padding: 7px;
+
+  background:
+    rgba(
+      18,
+      22,
+      19,
+      0.88
+    );
+
+  border:
+    1px solid
+    var(--line-strong);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 30px 80px
+    rgba(0, 0, 0, 0.4);
+
+  transition:
+    0.2s;
+}
+
+
+/* Search Focus */
+
+.search-bar:focus-within {
+  border-color:
+    rgba(
+      30,
+      215,
+      96,
+      0.55
+    );
+
+  box-shadow:
+    0 30px 80px
+    rgba(0, 0, 0, 0.5),
+
+    0 0 0 4px
+    rgba(30, 215, 96, 0.07);
+}
+
+
+/* Search Icon */
+
+.glass {
+  font-size: 25px;
+
+  color: #727c75;
+}
+
+
+/* Search Input */
+
+.search-bar input {
+  border: 0;
+
+  outline: 0;
+
+  background: transparent;
+
+  color: white;
+
+  padding: 17px 8px;
+
+  font-size: 1rem;
+
+  min-width: 0;
+}
+
+.search-bar input::placeholder {
+  color: #707973;
+}
+
+
+/* Search Button */
+
+.search-bar button {
+  border: 0;
+
+  border-radius: 12px;
+
+  background: var(--purple);
+
+  color: #071008;
+
+  padding:
+    15px 19px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    0.16s;
+}
+
+.search-bar button:hover {
+  transform:
+    scale(1.02);
+
+  background:
+    var(--purple-bright);
+}
+
+.search-bar b {
+  margin-left: 8px;
+
+  font-size: 1.1rem;
+}
+
+
+/* ================================
+   EXAMPLE QUERIES
+================================ */
+
+.examples {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+.examples-label,
+.chip {
+  font-size: 0.76rem;
+}
+
+.examples-label {
+  color: var(--muted);
+
+  padding: 8px 5px;
+}
+
+
+/* Query Chips */
+
+.chip {
+  border:
+    1px solid
+    var(--line);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  color: #929c95;
+
+  border-radius: 999px;
+
+  padding:
+    8px 12px;
+
+  cursor: pointer;
+
+  transition:
+    0.18s;
+}
+
+.chip:hover {
+  color: white;
+
+  border-color:
+    rgba(
+      30,
+      215,
+      96,
+      0.35
+    );
+
+  background:
+    rgba(
+      30,
+      215,
+      96,
+      0.06
+    );
+}
+
+
+/* ================================
+   RESULTS
+================================ */
+
+.results-wrap {
+  padding:
+    0 0
+    80px;
+}
+
+
+/* Status */
+
+.status {
+  color: var(--soft);
+
+  font-size: 0.9rem;
+
+  margin:
+    0 4px
+    18px;
+}
+
+.status.error {
+  color: #ff8171;
+}
+
+
+/* Track List */
+
+.tracklist {
+  list-style: none;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: grid;
+
+  gap: 12px;
+}
+
+
+/* ================================
+   RESULT CARD
+================================ */
+
+.track {
+  display: grid;
+
+  grid-template-columns:
+    48px
+    minmax(0, 1fr)
+    auto;
+
+  gap: 18px;
+
+  padding:
+    22px 24px;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(18, 23, 20, 0.9),
+      rgba(11, 14, 12, 0.8)
+    );
+
+  transition:
+    0.2s;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+/* Card Hover */
+
+.track:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(
+      30,
+      215,
+      96,
+      0.28
+    );
+}
+
+
+/* Green Side Indicator */
+
+.track::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  background:
+    var(--purple);
+
+  opacity: 0;
+}
+
+.track:hover::before {
+  opacity: 1;
+}
+
+
+/* Track Number */
+
+.track-index {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 12px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.045
+    );
+
+  color: #7f8982;
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-size: 0.78rem;
+
+  font-weight: 700;
+}
+
+
+/* Track Main */
+
+.track-main {
+  min-width: 0;
+}
+
+
+/* Song Title */
+
+.track-title {
+  margin:
+    0 0 3px;
+
+  font-family:
+    "Manrope",
+    sans-serif;
+
+  font-weight: 700;
+
+  font-size: 1.08rem;
+}
+
+.track-title a {
+  color: white;
+
+  text-decoration: none;
+}
+
+.track-title a:hover {
+  color:
+    var(--purple-bright);
+}
+
+
+/* Artist */
+
+.track-artist {
+  margin:
+    0 0 13px;
+
+  color: #8e9891;
+
+  font-size: 0.82rem;
+}
+
+
+/* Matching Lyrics */
+
+.track-excerpt {
+  margin: 0;
+
+  padding:
+    12px 15px;
+
+  border-left:
+    2px solid
+    rgba(
+      30,
+      215,
+      96,
+      0.38
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  border-radius:
+    0 8px 8px 0;
+
+  color: #aab3ad;
+
+  font-size: 0.84rem;
+
+  line-height: 1.6;
+}
+
+
+/* Similarity Score */
+
+.track-score {
+  color:
+    var(--purple-bright);
+
+  background:
+    rgba(
+      30,
+      215,
+      96,
+      0.08
+    );
+
+  border:
+    1px solid
+    rgba(
+      30,
+      215,
+      96,
+      0.16
+    );
+
+  border-radius:
+    999px;
+
+  padding:
+    7px 10px;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    700;
+
+  white-space:
+    nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+
+
+
+/* ================================
+   FOOTER
+================================ */
+
+footer {
+  min-height: 110px;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  color:
+    var(--muted);
+
+  font-size:
+    0.75rem;
+
+  gap: 20px;
+}
+
+footer strong {
+  color:
+    #adb7b0;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+
+  .nav,
+  main,
+  footer {
+    width:
+      calc(100% - 28px);
+  }
+
+  .engine {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+
+    padding:
+      80px 0
+      65px;
+  }
+
+  .search-bar {
+    grid-template-columns:
+      42px
+      1fr;
+  }
+
+  .search-bar button {
+    grid-column:
+      1 / -1;
+
+    margin-top:
+      4px;
+  }
+
+  .track {
+    grid-template-columns:
+      40px
+      1fr;
+
+    padding:
+      18px;
+
+    gap:
+      14px;
+  }
+
+  .track-score {
+    grid-column: 2;
+
+    width:
+      max-content;
+  }
+
+  footer {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+    justify-content:
+      center;
+
+    padding:
+      25px 0;
+  }
+}

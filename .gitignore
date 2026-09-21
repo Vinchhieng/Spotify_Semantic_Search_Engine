@@ -1,0 +1,31 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables
+.env
+.env.*
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated data/index files
+data/*.db
+data/*.npz
+data/*.dat
+data/*.bin
+
+# Logs
+*.log
+
+data/spotify_vibes.db/
+
+data/checkpoints/
