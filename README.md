@@ -102,7 +102,7 @@ spotify-semantic-search/
 
 This project uses the **Spotify Million Song Dataset**, available on Kaggle.
 
-🔗 [Spotify Million Song Dataset — Kaggle](https://www.kaggle.com/datasets/mrdatapsycho/spotify-million-song-dataset)
+🔗 [Spotify Million Song Dataset — Kaggle](https://www.kaggle.com/datasets/notshrirang/spotify-million-song-dataset)
 
 The dataset contains approximately **57,650 songs** with information including:
 
